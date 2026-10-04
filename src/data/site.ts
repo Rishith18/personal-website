@@ -18,8 +18,10 @@ export type Project = {
   details: string[];
   skills: string[];
   links: ProjectLink[];
-  // Drop a screenshot at /public/projects/<slug>.png and set this to its path.
+  // Drop a screenshot at /public/projects/<slug>.png (or a clip at <slug>.mp4)
+  // and it is picked up automatically — see src/app/page.tsx.
   image?: string;
+  video?: string;
 };
 
 export type Experience = {
@@ -40,7 +42,7 @@ export const profile = {
   location: "Pittsburgh, PA",
   eyebrow: "CS + Machine Learning @ Carnegie Mellon",
   tagline:
-    "I build ML systems and the infrastructure that ships them — from LLM data pipelines to production RAG.",
+    "I build ML systems and the infrastructure that ships them, from LLM data pipelines to production RAG.",
   email: "rishiprathi18@gmail.com",
   github: "https://github.com/Rishith18",
   githubHandle: "github.com/Rishith18",
@@ -49,54 +51,6 @@ export const profile = {
   resume: "/resume.pdf",
   headshot: "/headshot.jpg",
 };
-
-export const about = {
-  heading: "Engineer by trade, researcher by curiosity.",
-  subheading: "CS @ CMU · Machine Learning",
-  whatIBuild: "LLM systems, data pipelines & distributed backends",
-  paragraphs: [
-    "I'm a Computer Science student at Carnegie Mellon concentrating in Machine Learning. I like working where research ideas meet production engineering — taking something that works in a notebook and making it fast, reliable, and useful to real people.",
-    "This summer at Adobe I shipped a production RAG context engine serving 1,000+ users and built the evaluation harness that picked its embedding strategy. Before that, at CMU's NeuLab, I co-designed Forger — an open-source framework for generating LLM training data at scale (2nd author, COLM 2026) — and at Moss Robotics I built synthetic-data pipelines for computer vision.",
-    "Outside of work I build at hackathons: a voice-and-vision AI agent for Meta Ray-Ban glasses (VentureHacks winner) and a real-time EMT hospital-routing system (NexHacks winner, top 3 of 1,000+).",
-  ],
-};
-
-export const skillGroups: { title: string; items: string[] }[] = [
-  {
-    title: "Languages",
-    items: ["Python", "Java", "Scala", "TypeScript", "JavaScript", "C", "C++", "SML", "SQL"],
-  },
-  {
-    title: "Frameworks & Libraries",
-    items: ["FastAPI", "Flask", "GraphQL", "React", "Next.js", "Node.js"],
-  },
-  {
-    title: "Tools & Cloud",
-    items: [
-      "Git",
-      "Docker",
-      "Kubernetes",
-      "Linux",
-      "Temporal",
-      "AWS S3",
-      "AWS Lambda",
-      "Azure OpenAI",
-      "Cosmos DB",
-    ],
-  },
-  {
-    title: "AI / ML",
-    items: [
-      "PyTorch",
-      "TensorFlow",
-      "NumPy",
-      "Pandas",
-      "Hugging Face Transformers",
-      "LangChain",
-      "vLLM",
-    ],
-  },
-];
 
 export const education = {
   school: "Carnegie Mellon University",
@@ -119,6 +73,25 @@ export const FORGER_PAPER =
   "https://drive.google.com/file/d/1-RIB5-1Edn5o2S4tFTpjMvzokiP9Oea4/view?usp=sharing";
 
 export const experience: Experience[] = [
+  {
+    company: "Catalyst Lab @ CMU",
+    role: "Machine Learning Research Assistant",
+    location: "Pittsburgh, PA",
+    period: "Aug. 2026 – Present",
+    bullets: [
+      "Extending PithTrain, a distributed Mixture-of-Experts (MoE) training framework, with RL post-training for 100B+ parameter models.",
+      "Built a streaming checkpoint loader that loads Hugging Face model weights directly into a fully sharded data parallel (FSDP) model, eliminating a costly offline conversion step and reducing model startup time from 15–45 to 2–5 minutes.",
+    ],
+    tools: [
+      "Python",
+      "PyTorch",
+      "FSDP",
+      "Mixture of Experts",
+      "Reinforcement Learning",
+      "Hugging Face",
+      "Distributed Training",
+    ],
+  },
   {
     company: "Adobe",
     role: "Software Engineering Intern",
@@ -209,6 +182,21 @@ export const projects: Project[] = [
     links: [{ kind: "live", label: "Live Site", href: "https://rishith18.github.io/Phantom/" }],
   },
   {
+    slug: "splitpot",
+    title: "Splitpot",
+    badge: "Distributed CFR Poker Engine",
+    period: "Feb. 2026 – Mar. 2026",
+    blurb:
+      "A Counterfactual Regret Minimization poker engine parallelized across an autoscaling Kubernetes cluster — training in minutes, not hours.",
+    details: [
+      "Parallelized a Counterfactual Regret Minimization (CFR) poker engine in Python across 66K+ information sets.",
+      "Ran training on a Kubernetes cluster of autoscaling worker pods, cutting model training time from hours to minutes.",
+      "Built a containerized strategy storage system that aggregates results from parallel workers with checkpointing.",
+    ],
+    skills: ["Python", "Kubernetes", "Docker", "Distributed Systems", "Game Theory"],
+    links: [{ kind: "github", label: "GitHub", href: "https://github.com/Rishith18/PokerApp" }],
+  },
+  {
     slug: "swifter",
     title: "SwiftER",
     badge: "NexHacks 2026 Winner · Top 3 of 1,000+",
@@ -225,19 +213,34 @@ export const projects: Project[] = [
     links: [{ kind: "github", label: "GitHub", href: "https://github.com/NishnathPolav/SwiftER" }],
   },
   {
-    slug: "splitpot",
-    title: "Splitpot",
-    badge: "Distributed CFR Poker Engine",
-    period: "Feb. 2026 – Mar. 2026",
+    slug: "story0",
+    title: "Story.0",
+    badge: "Novel → Picture Book Web App",
+    period: "Jan. 2025 – Mar. 2025",
     blurb:
-      "A Counterfactual Regret Minimization poker engine parallelized across an autoscaling Kubernetes cluster — training in minutes, not hours.",
+      "A full-stack web app that turns long PDF novels into illustrated children's picture books with AI-generated captions and artwork.",
     details: [
-      "Parallelized a Counterfactual Regret Minimization (CFR) poker engine in Python across 66K+ information sets.",
-      "Ran training on a Kubernetes cluster of autoscaling worker pods, cutting model training time from hours to minutes.",
-      "Built a containerized strategy storage system that aggregates results from parallel workers with checkpointing.",
+      "Constructed a full-stack web app with a React front end and Python back end that converts large PDF novels into children's picture books.",
+      "The Python back end extracts the novel's text and sends it to the OpenAI API to produce kid-friendly captions for each page.",
+      "Leveraged the OpenAI API to generate image prompts for the DALL·E model, refined through iterative prompt engineering to keep illustrations consistent.",
     ],
-    skills: ["Python", "Kubernetes", "Docker", "Distributed Systems", "Game Theory"],
-    links: [],
+    skills: ["Python", "React", "OpenAI API", "DALL·E", "HTML"],
+    links: [{ kind: "github", label: "GitHub", href: "https://github.com/Rishith18/Story.0" }],
+  },
+  {
+    slug: "carbon-sim",
+    title: "Carbon-Sim",
+    badge: "CO₂ Policy Simulator",
+    period: "Sep. 2024",
+    blurb:
+      "An interactive CO₂ emissions simulator: adjust environmental policies with sliders and watch long-term projections update in real time.",
+    details: [
+      "Engineered a CO₂ emissions simulator in React that lets users manipulate emissions policy and see real-time impact analyses, improving decision-making efficiency by ~25%.",
+      "Implemented Chart.js for interactive data visualizations and designed custom dynamic sliders for manipulating the environmental policy graph.",
+      "Leveraged external APIs for continuously updated baseline data, improving the accuracy of long-term projections.",
+    ],
+    skills: ["React", "Chart.js", "JavaScript", "CSS", "External APIs"],
+    links: [{ kind: "github", label: "GitHub", href: "https://github.com/Pranav-Karra/Carbon-Sim" }],
   },
 ];
 
@@ -249,7 +252,6 @@ export const contact = {
 
 export const navItems = [
   { id: "intro", label: "Intro" },
-  { id: "about", label: "About" },
   { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },

@@ -16,7 +16,7 @@ export default function Contact() {
     >
       <div className="max-w-site mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         <div data-reveal>
-          <p className="text-mono text-[10px] uppercase tracking-[0.35em] text-muted">05 - Contact</p>
+          <p className="text-mono text-[10px] uppercase tracking-[0.35em] text-muted">04 - Contact</p>
           <h2 className="text-display text-4xl md:text-6xl text-paper mt-4 leading-tight">
             {contact.heading}
           </h2>

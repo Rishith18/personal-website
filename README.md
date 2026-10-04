@@ -32,6 +32,9 @@ on the next `npm run dev` / build (png, jpg, jpeg, or webp). Until then, a style
 
 A 16:10 aspect ratio (e.g. 1600×1000) fits the cards best.
 
+For a looping clip instead, add `<slug>.mp4` (muted, H.264). A same-named image, if present, is
+shown as the poster frame while it loads — e.g. `swifter.mp4` + `swifter.jpg`.
+
 ## Deploy (Vercel)
 
 1. Push this folder to a GitHub repo.

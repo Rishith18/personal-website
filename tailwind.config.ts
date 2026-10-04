@@ -9,7 +9,7 @@ const config: Config = {
         surface: "#141210",
         paper: "#e8e2d9",
         muted: "#8a8478",
-        accent: "#d4ff58",
+        accent: "#ff6b35",
       },
       maxWidth: {
         site: "1400px",

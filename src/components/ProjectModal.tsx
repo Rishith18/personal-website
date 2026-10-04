@@ -23,7 +23,7 @@ export default function ProjectModal({ project, index, onClose }: Props) {
         <>
           <div className="group relative aspect-[16/8] overflow-hidden">
             <ProjectCover project={project} index={index} sizes="(min-width: 768px) 768px, 100vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface from-5% via-surface/70 via-40% to-transparent" />
           </div>
           <div className="p-6 md:p-10 -mt-16 relative">
             <p className="text-mono text-[10px] text-accent uppercase tracking-widest">

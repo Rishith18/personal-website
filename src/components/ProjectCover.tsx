@@ -1,8 +1,37 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import type { Project } from "@/data/site";
 
-// Shows the project screenshot if one exists, otherwise a styled placeholder
-// in the site palette.
+const mediaClass = "object-cover transition-transform duration-700 group-hover:scale-105";
+
+function CoverVideo({ src, poster, title }: { src: string; poster?: string; title: string }) {
+  const video = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Respect reduced motion: show the poster frame instead of looping.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause();
+  }, []);
+
+  return (
+    <video
+      ref={video}
+      src={src}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={`${title} demo`}
+      className={`absolute inset-0 w-full h-full ${mediaClass}`}
+    />
+  );
+}
+
+// Shows the project clip or screenshot if one exists, otherwise a styled
+// placeholder in the site palette.
 export default function ProjectCover({
   project,
   index,
@@ -12,6 +41,10 @@ export default function ProjectCover({
   index: number;
   sizes: string;
 }) {
+  if (project.video) {
+    return <CoverVideo src={project.video} poster={project.image} title={project.title} />;
+  }
+
   if (project.image) {
     return (
       <Image
@@ -19,7 +52,7 @@ export default function ProjectCover({
         alt={`${project.title} screenshot`}
         fill
         sizes={sizes}
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className={mediaClass}
       />
     );
   }

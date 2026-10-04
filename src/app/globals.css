@@ -7,8 +7,8 @@
   --surface: #141210;
   --paper: #e8e2d9;
   --muted: #8a8478;
-  --accent: #d4ff58;
-  --accent-dim: rgba(212, 255, 88, 0.12);
+  --accent: #ff6b35;
+  --accent-dim: rgba(255, 107, 53, 0.12);
   --border: hsla(36, 25%, 88%, 0.08);
   --grain-opacity: 0.04;
 }
@@ -89,24 +89,26 @@ body {
   100% { transform: translate(5%, 0); }
 }
 
-.link-underline {
-  position: relative;
-  display: inline-block;
-}
+@layer components {
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
 
-.link-underline::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 0;
-  background-color: var(--accent);
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: var(--accent);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-.link-underline:hover::after {
-  width: 100%;
+  .link-underline:hover::after {
+    width: 100%;
+  }
 }
 
 /* Scroll reveal — elements start hidden only once JS has marked the page ready */

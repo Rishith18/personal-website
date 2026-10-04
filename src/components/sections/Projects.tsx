@@ -22,7 +22,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
         >
           <div>
             <p className="text-mono text-[10px] uppercase tracking-[0.35em] text-muted">
-              04 - Projects
+              03 - Projects
             </p>
             <h2 className="text-display text-4xl md:text-6xl text-paper mt-4 break-words">
               Selected work
@@ -38,12 +38,12 @@ export default function Projects({ projects }: { projects: Project[] }) {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 lg:gap-x-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {projects.map((project, index) => (
             <article
               key={project.slug}
               data-reveal
-              data-reveal-delay={String((index % 2) * 120)}
+              data-reveal-delay={String((index % 3) * 120)}
               className="group flex flex-col min-w-0"
             >
               <button
@@ -55,14 +55,14 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 <ProjectCover
                   project={project}
                   index={index}
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent opacity-80" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-ink from-15% via-ink/80 via-50% to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-6 xl:p-7">
                   <p className="text-mono text-[10px] text-accent uppercase tracking-widest">
                     {project.badge}
                   </p>
-                  <h3 className="text-display text-3xl md:text-4xl text-paper mt-2 group-hover:text-accent transition-colors break-words">
+                  <h3 className="text-display text-3xl md:text-4xl lg:text-3xl xl:text-4xl text-paper mt-2 group-hover:text-accent transition-colors break-words">
                     {project.title}
                   </h3>
                   <p className="text-mono text-[10px] text-muted mt-2 uppercase tracking-widest">
@@ -73,7 +73,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
               <p className="text-muted mt-6 leading-relaxed">{project.blurb}</p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-5 mb-6 flex flex-wrap gap-2">
                 {project.skills.map((skill) => (
                   <span
                     key={skill}
@@ -84,7 +84,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-[var(--border)] flex flex-wrap items-center gap-3">
+              <div className="mt-auto pt-6 border-t border-[var(--border)] flex flex-wrap items-center gap-3">
                 <ProjectLinks links={project.links} />
                 <button
                   type="button"
