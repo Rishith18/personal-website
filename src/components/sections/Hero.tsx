@@ -63,7 +63,7 @@ export default function Hero() {
                 fill
                 priority
                 sizes="(min-width: 768px) 320px, 288px"
-                className="object-cover object-[50%_30%] grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                className="object-cover object-[50%_30%] group-hover:grayscale transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent pointer-events-none" />
             </div>

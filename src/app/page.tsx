@@ -34,9 +34,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Projects projects={withScreenshots()} />
         <Education />
         <Experience />
-        <Projects projects={withScreenshots()} />
         <Contact />
       </main>
       <Footer />

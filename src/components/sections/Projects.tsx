@@ -22,7 +22,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
         >
           <div>
             <p className="text-mono text-[10px] uppercase tracking-[0.35em] text-muted">
-              03 - Projects
+              01 - Projects
             </p>
             <h2 className="text-display text-4xl md:text-6xl text-paper mt-4 break-words">
               Selected work

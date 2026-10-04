@@ -252,8 +252,8 @@ export const contact = {
 
 export const navItems = [
   { id: "intro", label: "Intro" },
+  { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];

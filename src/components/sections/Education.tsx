@@ -9,7 +9,7 @@ export default function Education() {
       <div className="max-w-site mx-auto">
         <div data-reveal>
           <p className="text-mono text-[10px] uppercase tracking-[0.35em] text-muted">
-            01 - Education
+            02 - Education
           </p>
           <h2 className="text-display text-4xl md:text-5xl text-paper mt-4 mb-16">
             Where I&apos;m learning
