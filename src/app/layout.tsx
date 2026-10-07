@@ -4,6 +4,9 @@ import { profile } from "@/data/site";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import RevealObserver from "@/components/RevealObserver";
+import ClickTracker from "@/components/ClickTracker";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const display = Instrument_Serif({
@@ -71,7 +74,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollProgress />
         <SmoothScroll />
         <RevealObserver />
+        <ClickTracker />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
